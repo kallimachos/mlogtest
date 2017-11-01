@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Configuration file for template documentation."""
+"""Configuration file for mlogtest documentation."""
 
 import os
 import sys
@@ -20,10 +20,10 @@ except ImportError as e:
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('..'))
-sys.path.insert(0, os.path.abspath('../template/'))
+sys.path.insert(0, os.path.abspath('../mlogtest/'))
 
 try:
-    from template import __version__
+    from mlogtest import __version__
 except:
     print('Cannot load version.')
 
@@ -40,7 +40,6 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.coverage',
     'sphinx.ext.viewcode',
-    'sphinx-prompt',
 ]
 
 if spelling is not None:
@@ -61,7 +60,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Template'
+project = 'mlogtest'
 copyright = '2017, Brian Moss'
 author = 'Brian Moss'
 

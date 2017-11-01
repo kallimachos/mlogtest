@@ -9,7 +9,7 @@ from glob import glob
 # from mtools.util.logevent import LogEvent
 
 # difflogs version
-VERSION = "0.0.1"
+VERSION = "0.1.0"
 
 
 def compare_logs(logA, logB, output):

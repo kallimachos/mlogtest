@@ -9,6 +9,4 @@ pytest
 pytest-cov
 sphinx
 sphinxcontrib-spelling
-sphinx-prompt
 sphinx_rtd_theme
-sphinx-testing
