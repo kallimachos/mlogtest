@@ -67,12 +67,3 @@ Testing logs
 #. Run the ``mtools/test/test_logs.py`` script to produce a report of
    differences between all log versions in the ``mtools/test/logfiles/``
    directory.
-
-
-mtools feature requests
-~~~~~~~~~~~~~~~~~~~~~~~
--  mloginfo option to summarize log file variations
-   -  read mode (legacy, command)
-   -  write mode (legacy, command)
-   -  client information summary by version and operating system
-   -  logevent should parse appname info -> mloginfo
