@@ -1,0 +1,22 @@
+[
+  {
+    "name" : "3.0.15",
+    "path" : "/usr/local/m/versions/3.0.15/bin/"
+  },
+  {
+    "name" : "3.2.16",
+    "path" : "/usr/local/m/versions/3.2.16/bin/"
+  },
+  {
+    "name" : "3.4.0",
+    "path" : "/usr/local/m/versions/3.4.0/bin/"
+  },
+  {
+    "name" : "3.4.6",
+    "path" : "/usr/local/m/versions/3.4.6/bin/"
+  },
+  {
+    "name" : "3.4.10",
+    "path" : "/usr/local/m/versions/3.4.10/bin/"
+  }
+]
