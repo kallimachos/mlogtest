@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$TRAVIS_REPO_SLUG" == "kallimachos/chios" ] && \
+if [ "$TRAVIS_REPO_SLUG" == "kallimachos/mlogtest" ] && \
     [ "$TRAVIS_PULL_REQUEST" == "false" ] && \
     [ "$TRAVIS_BRANCH" == "master" ]; then
 
@@ -13,7 +13,7 @@ if [ "$TRAVIS_REPO_SLUG" == "kallimachos/chios" ] && \
     git config --global user.name "travis-ci"
     git clone --quiet \
         --branch=gh-pages \
-        https://$GH_TOKEN@github.com/kallimachos/chios \
+        https://$GH_TOKEN@github.com/kallimachos/mlogtest \
         gh-pages > /dev/null
 
     cd gh-pages
@@ -25,10 +25,10 @@ auto-pushed to gh-pages"
     git push -fq origin gh-pages > /dev/null
 
     if test `tput -T $TERM colors` -lt 256; then
-        echo "Docs published to http://kallimachos.github.io/chios"
+        echo "Docs published to http://kallimachos.github.io/mlogtest"
     else
         tput -T $TERM setaf 2
-        echo "Docs published to http://kallimachos.github.io/chios"
+        echo "Docs published to http://kallimachos.github.io/mlogtest"
         tput -T $TERM sgr0
     fi
 
