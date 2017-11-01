@@ -168,37 +168,41 @@
 <p>or</p>
 <p>Create <code class="docutils literal"><span class="pre">versions.json</span></code> with required versions and paths.</p>
 </li>
-<li><p class="first">Generate logs using <code class="docutils literal"><span class="pre">create_mongodb_logs.py</span></code>. Adjust <code class="docutils literal"><span class="pre">commands.js</span></code> and
-<code class="docutils literal"><span class="pre">mongod.conf</span></code> as required.</p>
+<li><p class="first">Generate logs using <a class="reference external" href="https://github.com/jorge-imperial/create_mongodb_logs">create_mongodb_logs.py</a>. Adjust
+<code class="docutils literal"><span class="pre">commands.js</span></code> and <code class="docutils literal"><span class="pre">mongod.conf</span></code> as required.</p>
 <p>For example:</p>
 <p><code class="docutils literal"><span class="pre">python</span> <span class="pre">create_mongodb_logs.py</span> <span class="pre">--jscript</span> <span class="pre">commands.js</span> <span class="pre">-o</span> <span class="pre">logs</span></code>.</p>
 </li>
-<li><p class="first">Run the <code class="docutils literal"><span class="pre">transferlogs.sh</span></code> script to copy full log, conf file, and snippet
+<li><p class="first">Run the <code class="docutils literal"><span class="pre">transferlogs.py</span></code> script to copy full log, conf file, and snippet
 logs for each version.</p>
-<p>Options:</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">i</span>  <span class="o">--</span><span class="nb">input</span>   <span class="n">source</span> <span class="n">directory</span> <span class="n">containing</span> <span class="n">log</span> <span class="n">files</span>
-<span class="o">-</span><span class="n">o</span>  <span class="o">--</span><span class="n">output</span>  <span class="n">output</span> <span class="n">directory</span> <span class="n">where</span> <span class="n">translogs</span> <span class="n">creates</span> <span class="n">version</span> <span class="n">directories</span>
-</pre></div>
-</div>
 <p>This script creates directories for each log version in the form:
-<code class="docutils literal"><span class="pre">test/logfiles/v*/*/mongod.log</span></code>.</p>
+<code class="docutils literal"><span class="pre">v*/*/mongod.log</span></code>.</p>
 <p>For example:</p>
-<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">test</span><span class="o">/</span><span class="n">logfiles</span><span class="o">/</span><span class="n">v3</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">mongod</span><span class="o">.</span><span class="n">log</span>
-<span class="n">test</span><span class="o">/</span><span class="n">logfiles</span><span class="o">/</span><span class="n">v3</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">mongod</span><span class="o">.</span><span class="n">conf</span>
-<span class="n">test</span><span class="o">/</span><span class="n">logfiles</span><span class="o">/</span><span class="n">v3</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">test</span><span class="o">-</span><span class="n">insert</span><span class="o">.</span><span class="n">log</span>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">transferlogs</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">i</span> <span class="n">logs</span><span class="o">/</span> <span class="o">-</span><span class="n">o</span> <span class="n">result</span><span class="o">/</span>
+<span class="o">...</span>
+<span class="n">result</span><span class="o">/</span><span class="n">v3</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">mongod</span><span class="o">-</span><span class="mf">3.2</span><span class="o">.</span><span class="mf">1.</span><span class="n">log</span>
+<span class="n">result</span><span class="o">/</span><span class="n">v3</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">mongod</span><span class="o">-</span><span class="mf">3.2</span><span class="o">.</span><span class="mf">1.</span><span class="n">conf</span>
+<span class="n">result</span><span class="o">/</span><span class="n">v3</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">MTEST</span><span class="o">-</span><span class="n">insert</span>
+<span class="n">result</span><span class="o">/</span><span class="n">v3</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">MTEST</span><span class="o">-</span><span class="n">bulkinsert</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Commit the files to <code class="docutils literal"><span class="pre">git</span></code>.</p>
+<li><p class="first">Run <code class="docutils literal"><span class="pre">python</span> <span class="pre">transferlogs.py</span> <span class="pre">-h</span></code> to see available options.</p>
 </li>
 </ol>
 </div>
-<div class="section" id="testing-logs">
-<h2>Testing logs<a class="headerlink" href="#testing-logs" title="Permalink to this headline">#</a></h2>
-<ol class="arabic simple">
-<li>Run the <code class="docutils literal"><span class="pre">mtools/test/test_logs.py</span></code> script to produce a report of
-differences between all log versions in the <code class="docutils literal"><span class="pre">mtools/test/logfiles/</span></code>
-directory.</li>
+<div class="section" id="diffing-logs">
+<h2>Diffing logs<a class="headerlink" href="#diffing-logs" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p class="first">Run the <code class="docutils literal"><span class="pre">difflogs.py</span></code> script to produce a report of
+differences between the specified log versions.</p>
+<p>The script treats the first argument as the base version, and outputs the
+lines in the second file that differ from the first.</p>
+<p>For example:</p>
+<p>python difflogs.py logs/v3.2/3.2.1/ logs/v3.4/3.4.10/</p>
+</li>
+<li><p class="first">Run <code class="docutils literal"><span class="pre">python</span> <span class="pre">difflogs.py</span> <span class="pre">-h</span></code> to see available options.</p>
+</li>
 </ol>
 </div>
 <div class="section" id="modules">
