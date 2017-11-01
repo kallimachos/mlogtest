@@ -12,18 +12,18 @@ from glob import glob
 VERSION = "0.1.0"
 
 
-def compare_logs(logA, logB, output):
+def compare_logs(loga, logb, output):
     """Compare two log files."""
-    logging.debug("Comparing: " + logA + " and " + logB)
+    logging.debug("Comparing: " + loga + " and " + logb)
     try:
-        with open(logB, 'r') as file1:
-            with open(logA, 'r') as file2:
+        with open(logb, 'r') as file1:
+            with open(loga, 'r') as file2:
                 same = set(file1).difference(file2)
     except Exception as e:
         logging.error(e)
         exit()
     header = """\n================================\n%s
-================================\n""" % os.path.basename(logB)
+================================\n""" % os.path.basename(logb)
     if output == "stdout":
         print(header)
         if len(same) == 0:
@@ -47,10 +47,10 @@ def compare_logs(logA, logB, output):
 
 def process_files(base, new, output):
     """Process log files."""
-    verA = os.path.abspath(base)
-    base = os.path.basename(verA)
-    verB = os.path.abspath(new)
-    new = os.path.basename(verB)
+    vera = os.path.abspath(base)
+    base = os.path.basename(vera)
+    verb = os.path.abspath(new)
+    new = os.path.basename(verb)
     versions = "Base version: %s\nNew version: %s" % (base, new)
     print(versions)
     if output == "stdout":
@@ -63,13 +63,13 @@ def process_files(base, new, output):
         except OSError:
             pass
 
-    logs = glob(os.path.join(verA + "/MTEST-*"))
+    logs = glob(os.path.join(vera + "/MTEST-*"))
     logging.debug('logs: ' + str(logs))
     for log in logs:
         filename = os.path.basename(log)
-        logA = os.path.join(verA, filename)
-        logB = os.path.join(verB, filename)
-        compare_logs(logA, logB, output)
+        loga = os.path.join(vera, filename)
+        logb = os.path.join(verb, filename)
+        compare_logs(loga, logb, output)
     return
 
 

@@ -24,8 +24,8 @@ sys.path.insert(0, os.path.abspath('../mlogtest/'))
 
 try:
     from mlogtest import __version__
-except:
-    print('Cannot load version.')
+except ImportError as e:
+    print('Cannot load version: ' + e)
 
 # -- General configuration ------------------------------------------------
 

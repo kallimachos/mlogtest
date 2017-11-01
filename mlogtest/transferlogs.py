@@ -26,7 +26,7 @@ def grep(filename, pattern):
         exit()
 
 
-def process_version(filename, outDir):
+def process_version(filename, outdir):
     """Process log   for MongoDB version and add files to output directory."""
     commands = ["MTEST-insert", "MTEST-bulkinsert", "MTEST-query",
                 "MTEST-update", "MTEST-delete"]
@@ -39,7 +39,7 @@ def process_version(filename, outDir):
     logging.debug("version: " + version)
     base = "v" + os.path.splitext(version)[0]
     logging.debug("base: " + base)
-    dest = os.path.join(outDir, base, version)
+    dest = os.path.join(outdir, base, version)
     logging.debug("dest: " + dest)
 
     # Create destination directory and copy full log and conf files there
@@ -57,9 +57,9 @@ def process_version(filename, outDir):
         for command in commands:
             snippet = grep(filename, command)
             logging.debug("snippet: " + str(snippet))
-            snippetPath = os.path.join(dest, command)
-            logging.debug("snippetPath: " + snippetPath)
-            with open(snippetPath, 'w') as f:
+            snippetpath = os.path.join(dest, command)
+            logging.debug("snippetpath: " + snippetpath)
+            with open(snippetpath, 'w') as f:
                 for line in snippet:
                     line = re.sub(r'\s\d*ms$', '', line)[29:]
                     f.write(line)
@@ -69,11 +69,11 @@ def process_version(filename, outDir):
     return
 
 
-def process_files(inDir, outDir):
+def process_files(indir, outdir):
     """Find log files, process, and write to output directory."""
-    inpath = os.path.abspath(inDir)
+    inpath = os.path.abspath(indir)
     logging.info("Source directory: " + inpath)
-    outpath = os.path.abspath(outDir)
+    outpath = os.path.abspath(outdir)
     logging.info("Output directory: " + outpath)
     logs = glob(os.path.join(inpath + "/mongod-*.log"))
     for log in logs:
