@@ -24,7 +24,7 @@ Generating log files for comparison testing
 
 #. Run the ``transferlogs.py`` script to copy full log, conf file, and snippet
    logs for each version.
-   
+
    This script creates directories for each log version in the form:
    ``v*/*/mongod.log``.
 
